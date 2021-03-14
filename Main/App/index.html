@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="style.css"></script>
     <title>SoliPass</title>
@@ -20,4 +23,5 @@
   </body>
   <script src="generator.js"></script>
   <script src="eventlistener.js"></script>
+  <script src="display.js"></script>
 </html>
