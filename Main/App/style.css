@@ -1,0 +1,8 @@
+#passwordLength {
+  width: 20px;
+}
+#passwordLength::-webkit-outer-spin-button,
+#passwordLength::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

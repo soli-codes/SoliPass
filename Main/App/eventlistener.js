@@ -1,1 +1,3 @@
-document.querySelector('#generate').addEventListener('click', generatePassword);
+document
+  .querySelector('#generate')
+  .addEventListener('click', writePasswordToFile);

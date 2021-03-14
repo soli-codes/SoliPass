@@ -1,4 +1,4 @@
-let alphaNumeric = [
+const alphaNumeric = [
   [
     'A',
     'a',
@@ -56,19 +56,21 @@ let alphaNumeric = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
   ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '=', '+', '-'],
 ];
+let pwLength = document.querySelector('#passwordLength');
+let pwName = document.querySelector('#passwordName');
 
-let generateRandomNumber = (num) => {
+const generateRandomNumber = (num) => {
   return Math.floor(Math.random() * num);
 };
 
-let generateAlphaNumericNoSpecialChars = () => {
+const generateAlphaNumericNoSpecialChars = () => {
   let arrFirstNum = generateRandomNumber(2);
   if (arrFirstNum === 0) {
     return alphaNumeric[0][generateRandomNumber(52)];
   } else return alphaNumeric[1][generateRandomNumber(9)];
 };
 
-let generateAlphaNumericWithSpecialChars = () => {
+const generateAlphaNumericWithSpecialChars = () => {
   let arrFirstNum = generateRandomNumber(3);
   if (arrFirstNum === 0) {
     return alphaNumeric[0][generateRandomNumber(52)];
@@ -77,19 +79,40 @@ let generateAlphaNumericWithSpecialChars = () => {
   } else return alphaNumeric[2][generateRandomNumber(14)];
 };
 
-let generatePassword = () => {
-  let pwLength = document.querySelector('#passwordLength').value;
+const generatePassword = () => {
   let password = '';
   let i = 0;
   if (document.querySelector('#hasSpecialCharacters').checked) {
-    while (i < pwLength) {
+    while (i < pwLength.value) {
       password += generateAlphaNumericWithSpecialChars();
       i++;
     }
   } else
-    while (i < pwLength) {
+    while (i < pwLength.value) {
       password += generateAlphaNumericNoSpecialChars();
       i++;
     }
   return password;
+};
+
+const writePasswordToFile = () => {
+  let name = pwName.value;
+  let password = generatePassword();
+  if (pw === false) {
+    let baseObject = {
+      passwords: {},
+    };
+    baseObject['passwords'][name] = password;
+    let baseData = JSON.stringify(baseObject, null, 2);
+    fs.writeFileSync(`${__dirname}/pw.json`, baseData);
+    return;
+  }
+  if (pw['passwords'][name] != null) {
+    alert('That password already exists, please try another name');
+    return;
+  } else {
+    pw['passwords'][name] = password;
+  }
+  let data = JSON.stringify(pw, null, 2);
+  fs.writeFileSync(`${__dirname}/pw.json`, data);
 };
