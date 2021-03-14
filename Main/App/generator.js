@@ -79,6 +79,7 @@ const generateAlphaNumericWithSpecialChars = () => {
   } else return alphaNumeric[2][generateRandomNumber(14)];
 };
 
+// Generates a random password, with special characters if box is checked when called
 const generatePassword = () => {
   let password = '';
   let i = 0;
@@ -95,9 +96,16 @@ const generatePassword = () => {
   return password;
 };
 
+// Writes password to pw.json file
 const writePasswordToFile = () => {
   let name = pwName.value;
+  // Makes sure a length was given, and generates password if so
+  if (pwLength.value < 1) {
+    alert('Please enter a length.');
+    return;
+  }
   let password = generatePassword();
+  // Checks if pw is false or not (if false, pw.json does not exist) and creates the base object to turn into JSON if not
   if (pw === false) {
     let baseObject = {
       passwords: {},
@@ -107,6 +115,12 @@ const writePasswordToFile = () => {
     fs.writeFileSync(`${__dirname}/pw.json`, baseData);
     return;
   }
+  // Makes sure something was input into name
+  if (name.length < 1) {
+    alert('Please enter a name.');
+    return;
+  }
+  // Makes sure password does not already exist
   if (pw['passwords'][name] != null) {
     alert('That password already exists, please try another name');
     return;
