@@ -101,7 +101,7 @@ const writePasswordToFile = () => {
   let name = pwName.value;
   // Makes sure a length was given, and generates password if so
   if (pwLength.value < 1) {
-    alert('Please enter a length.');
+    alert('Please enter a length greater than 0.');
     return;
   }
   let password = generatePassword();
