@@ -2,3 +2,7 @@
 document
   .querySelector('#generate')
   .addEventListener('click', writePasswordToFile);
+
+window.addEventListener('DOMContentLoaded', () => {
+  writePasswordToScreen();
+});

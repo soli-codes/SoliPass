@@ -19,10 +19,6 @@ function createWindow() {
     },
   });
 
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
-
   mainWindow.loadURL(`file://${__dirname}/App/index.html`);
 }
 

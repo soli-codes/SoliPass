@@ -1,3 +1,5 @@
+const dialog = require('electron').remote.dialog;
+
 const alphaNumeric = [
   [
     'A',
@@ -101,7 +103,10 @@ const writePasswordToFile = () => {
   let name = pwName.value;
   // Makes sure a length was given, and generates password if so
   if (pwLength.value < 1) {
-    alert('Please enter a length greater than 0.');
+    dialog.showErrorBox(
+      'Wrong Length',
+      'Please enter a length greater than 0.'
+    );
     return;
   }
   let password = generatePassword();
@@ -117,12 +122,15 @@ const writePasswordToFile = () => {
   }
   // Makes sure something was input into name
   if (name.length < 1) {
-    alert('Please enter a name.');
+    dialog.showErrorBox('No Name', 'Please enter a name.');
     return;
   }
   // Makes sure password does not already exist
   if (pw['passwords'][name] != null) {
-    alert('That password already exists, please try another name');
+    dialog.showErrorBox(
+      'Already Exists',
+      'That password already exists, please try another name'
+    );
     return;
   } else {
     pw['passwords'][name] = password;
