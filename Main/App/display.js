@@ -1,5 +1,7 @@
 const fs = require('fs');
 const { app } = require('electron').remote;
+let pwPath = `${app.getPath('userData')}/pw.json`;
+let pw = JSON.parse(fs.readFileSync(pwPath));
 
 const writePasswordToScreen = () => {
   let passwordArea = document.getElementById('passwordArea');
