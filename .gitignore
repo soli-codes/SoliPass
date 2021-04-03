@@ -118,3 +118,4 @@ dist
 
 # My stuff
 Main/App/pw.json
+electron-builder.yml

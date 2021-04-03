@@ -6,13 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "dev": "nodemon --exec electron ."
+    "dev": "nodemon --exec electron .",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
   },
   "keywords": [],
   "author": "Solitary Flower",
   "license": "ISC",
   "devDependencies": {
     "electron": "^12.0.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "electron-builder": "^22.10.5"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/solitary-flower/SoliPass"
   }
 }

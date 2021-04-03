@@ -111,15 +111,6 @@ const writePasswordToFile = () => {
   }
   let password = generatePassword();
   // Checks if pw is false or not (if false, pw.json does not exist) and creates the base object to turn into JSON if not
-  if (pw === false) {
-    let baseObject = {
-      passwords: {},
-    };
-    baseObject['passwords'][name] = password;
-    let baseData = JSON.stringify(baseObject, null, 2);
-    fs.writeFileSync(`${__dirname}/pw.json`, baseData);
-    return;
-  }
   // Makes sure something was input into name
   if (name.length < 1) {
     dialog.showErrorBox('No Name', 'Please enter a name.');
@@ -136,9 +127,9 @@ const writePasswordToFile = () => {
     pw['passwords'][name] = password;
   }
   let data = JSON.stringify(pw, null, 2);
-  fs.writeFileSync(`${__dirname}/pw.json`, data);
+  fs.writeFileSync(pwPath, data);
   document.getElementById('passwordArea').insertAdjacentHTML(
-    'beforeend',
+    'afterbegin',
     `
   <button class="password">
     ${pwName.value}
