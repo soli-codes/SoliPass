@@ -18,7 +18,7 @@ function createWindow() {
       enableRemoteModule: true,
     },
   });
-
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(`file://${__dirname}/App/index.html`);
 }
 

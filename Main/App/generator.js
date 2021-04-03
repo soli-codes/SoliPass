@@ -137,4 +137,13 @@ const writePasswordToFile = () => {
   }
   let data = JSON.stringify(pw, null, 2);
   fs.writeFileSync(`${__dirname}/pw.json`, data);
+  document.getElementById('passwordArea').insertAdjacentHTML(
+    'beforeend',
+    `
+  <button class="password">
+    ${pwName.value}
+  </button>
+  `
+  );
+  buttonEventListener();
 };

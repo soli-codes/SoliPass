@@ -1,6 +1,10 @@
 #passwordLength {
   width: 20px;
 }
+body {
+  background-color: #121212;
+  color: rgba(255, 255, 255, 0.705);
+}
 #passwordLength::-webkit-outer-spin-button,
 #passwordLength::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -10,22 +14,28 @@
 .password {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #000000;
+  border: 1px solid white;
   margin: 0.2em 0.3em 0.3em 0.2em;
-  border-radius: 0.12em;
+  border-radius: 0.2em;
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 800;
-  font-size: 30px;
-  color: #ffffff;
-  background-color: #000000;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.801);
+  background-color: transparent;
   text-align: center;
   transition: all 0.2s;
   width: 150px;
   height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .password:hover {
   color: #000000;
   background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 0.2em;
+  transition-duration: 750ms;
 }
